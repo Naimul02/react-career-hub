@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppliedJobs from "./component/AppliedJobs/AppliedJobs";
 import ErrorPage from "./component/ErrorPage/ErrorPage";
 import Home from "./component/Home/Home";
+import JobDetails from "./component/JobDetails/JobDetails";
 import Root from "./component/Root/Root";
 import "./index.css";
 
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
       {
         path: "/applied",
         element: <AppliedJobs></AppliedJobs>,
+      },
+      {
+        path: "/job/:id",
+        loader: () => fetch("../jobs.json"), //do not load all data. load only what you need
+        element: <JobDetails></JobDetails>,
       },
     ],
   },
